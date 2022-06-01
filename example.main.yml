@@ -9,9 +9,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: build_and_deploy
-        uses: trwbox/obsidian-zola-deploy-action@v0.1.0-alpha
+        uses: trwbox/obsidian-zola-deploy-action@v0.1.1-alpha
         env:
           # Target branch
           PAGES_BRANCH: gh-pages
           # Provide personal access token
-          TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
