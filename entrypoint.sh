@@ -96,7 +96,10 @@ main() {
     
     zola --root __site/build build --output-dir public
 
-    # echo Building with flags: ${BUILD_FLAGS:+"$BUILD_FLAGS"}
+    if [ -f __obsidian/CNAME ]; then
+        echo "Found a CNAME record copying"
+	cp  __obsidian/CNAME public/
+    fi
 
     if ${BUILD_ONLY}; then
         echo "Build complete. Deployment skipped by request"
