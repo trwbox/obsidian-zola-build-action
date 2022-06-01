@@ -1,0 +1,9 @@
+name: 'Obsidian-Zola Build for Pages'
+description: 'Build an obsidian-zola site, and push it to gh-pages branch'
+author: 'Trent Walraven'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'moon'  
+  color: 'blue'
