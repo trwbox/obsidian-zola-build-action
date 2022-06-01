@@ -12,6 +12,9 @@ This is a github actions script to build an obsidian-zola site, and push it to t
 
 # TODO
 
-[ ] Pull the site that is being published automatically, to not rely on user input
-[ ] Describe some of the other global variables that can be set
-[ ] See if this can work by pulling from a private repo and only pushing the site to a public repo, so that if obsidian-zola allows for hidden pages that can be done like that
+- [ ] Pull the domain of the site that is being published automatically, to not rely on user input
+- [ ] Describe some of the other global variables that can be set
+- [ ] See if this can work by pulling from a private repo and only pushing the site to a public repo, so that if obsidian-zola allows for hidden pages that can be done like that
+- [ ] Publish on github marketplace for easier use
+- [ ] Speed improvements?
+- [ ] Fix issues that arise in documentation or code
