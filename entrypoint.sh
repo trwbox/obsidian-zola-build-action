@@ -71,7 +71,7 @@ main() {
     eval $(awk '/\[build.environment\]/{flag=1;next}/^\s*$/{flag=0} {if (flag && $1 != "#" && $1 != "") {printf("export %s=", $1)} if (flag && $1 != "#" && $1 != "") for(i=3;  i<=NF;  i++) if(i==NF) {printf("%s\n", $i)} else printf("%s ", $i)}' __obsidian/netlify.toml | sed 's/\r$//')
     
     # Clone the main repo
-    git clone https://github.com/ppeetteerrs/obsidian-zola.git __site
+    git clone https://github.com/trwbox/obsidian-zola.git __site
 
     # Do  the things from run.sh
     echo "Moving zola to build"
