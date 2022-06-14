@@ -72,6 +72,9 @@ main() {
     
     # Clone the main repo
     git clone https://github.com/trwbox/obsidian-zola.git __site
+    cd __site
+    git checkout base-path-dev
+    cd ..
 
     # Do  the things from run.sh
     echo "Moving zola to build"
