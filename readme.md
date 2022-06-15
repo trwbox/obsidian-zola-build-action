@@ -18,3 +18,8 @@ This is a github actions script to build an obsidian-zola site, and push it to t
 - [ ] Publish on github marketplace for easier use
 - [ ] Speed improvements?
 - [ ] Fix issues that arise in documentation or code
+- [ ] Don't just pull obsidian-zola straight, pull a versioned instead
+
+## Currently there is a release thay v0.1.1-testing which fixes path issues, but needs some changes in netlify.toml
+Change BASE_PATH to have the base path without any /s
+Change the SITE_URL to include the whole site including the path with a trailing /
