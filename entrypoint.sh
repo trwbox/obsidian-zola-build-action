@@ -3,7 +3,7 @@ set -o pipefail
 
 # Set the version of obsidian-zola that this will build from if not set by the user
 if [[ -n "$REPO_VERSION" ]]; then
-	REPO_VERION="v1.3.0"
+    REPO_VERION="v1.3.0"
 fi
 
 # For backwards compatibility
@@ -75,7 +75,7 @@ main() {
         
     # Clone the main repo at a specific version
     echo "Using obsidian-zola version: $REPO_VERSION" 
-    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch $REPO_VERION __site
+    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch ${REPO_VERSION} __site
     # Move the netlify.toml into that directory
     if [ ! -f __obsidian/netlify.toml ]; then
     	echo "No netlify.toml. Exiting"
