@@ -3,7 +3,7 @@ set -o pipefail
 
 # Set the version of obsidian-zola that this will build from if not set by the user
 if [[ -n "$REPO_VERSION" ]]; then
-	REPO_VERION=v1.3.0
+	REPO_VERION="v1.3.0"
 fi
 
 # For backwards compatibility
@@ -71,6 +71,7 @@ main() {
     mkdir __obsidian
     # This will throw a subdirectory error, that is okay
     mv * __obsidian
+    echo "If there is a subdirectory error that is fine"
         
     # Clone the main repo at a specific version
     echo "Using obsidian-zola version: $REPO_VERSION" 
