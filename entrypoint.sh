@@ -1,6 +1,11 @@
 #!/bin/bash
 set -o pipefail
 
+# Set the version of obsidian-zola that this will build from if not set by the user
+if [[ -n "$REPO_VERSION" ]]; then
+	REPO_VERION=v1.3.0
+fi
+
 # For backwards compatibility
 if [[ -n "$TOKEN" ]]; then
     GITHUB_TOKEN=$TOKEN
@@ -64,19 +69,28 @@ main() {
 
     echo "Making __obsidian directory"
     mkdir __obsidian
-    # This will throw a subdirectory error, so temp turn off error checking
+    # This will throw a subdirectory error, that is okay
     mv * __obsidian
+        
+    # Clone the main repo at a specific version
+    echo "Using obsidian-zola version: $REPO_VERSION" 
+    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch $REPO_VERION __site
+    # Move the netlify.toml into that directory
+    if [ ! -f __obsidian/netlify.toml ]; then
+    	echo "No netlify.toml. Exiting"
+	exit 1
+    fi
+    echo "Found netlify.toml"
+    echo "Moving netlify.toml"
+    mv __obsidian/netlify.toml __site/
     
-    # Pull out enviroment variables
-    eval $(awk '/\[build.environment\]/{flag=1;next}/^\s*$/{flag=0} {if (flag && $1 != "#" && $1 != "") {printf("export %s=", $1)} if (flag && $1 != "#" && $1 != "") for(i=3;  i<=NF;  i++) if(i==NF) {printf("%s\n", $i)} else printf("%s ", $i)}' __obsidian/netlify.toml | sed 's/\r$//')
-    
-    # Clone the main repo
-    git clone https://github.com/trwbox/obsidian-zola.git __site
+    # Getting the enviroment variables, and setting them
+    echo "Getting and setting enviroment variables"
     cd __site
-    git checkout base-path-dev
-    cd ..
-
-    # Do  the things from run.sh
+    python evn.py
+    source env.sh && rm env.sh
+    
+    # Do the things from run.sh
     echo "Moving zola to build"
     rsync -a __site/zola/ __site/build
     echo "Moving content to content"
@@ -87,13 +101,7 @@ main() {
 	    __site/bin/obsidian-export --frontmatter=never --hard-linebreaks --no-recursive-embeds __obsidian __site/build/__docs
     else
 	    __site/bin/obsidian-export --frontmatter=never --no-recursive-embeds __obsidian __site/build/__docs
-    fi    
-    
-    if [ ! -f __obsidian/netlify.toml ]; then
-    	echo "No netlify.toml. Exiting"
-	exit 1
     fi
-    echo "Found netlify.toml"
     
     python __site/convert.py
     
