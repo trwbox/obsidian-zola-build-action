@@ -70,10 +70,7 @@ main() {
         
     # Clone the main repo at a specific version
     echo "Using obsidian-zola version: v1.3.0"
-    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch v1.3.0
-    echo "Make and move the repo into __site"
-    mkdir __site
-    mv obsidian-zola/* __site/
+    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch v1.3.0 __site
     # Move the netlify.toml into that directory
     if [ ! -f __obsidian/netlify.toml ]; then
     	echo "No netlify.toml. Exiting"
