@@ -77,8 +77,11 @@ main() {
 	exit 1
     fi
     echo "Found netlify.toml"
-    echo "Moving netlify.toml"
-    mv __obsidian/netlify.toml __site/
+    #echo "Moving netlify.toml"
+    #mv __obsidian/netlify.toml __site/
+    
+    VAULT="../__obsidian"
+    echo "Vault path: $vault"
     
     # Getting the enviroment variables, and setting them
     echo "Getting and setting enviroment variables"
