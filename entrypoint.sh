@@ -88,6 +88,7 @@ main() {
     cd __site
     python env.py
     source env.sh && rm env.sh
+    cd ..
     
     # Do the things from run.sh
     echo "Moving zola to build"
