@@ -74,8 +74,9 @@ main() {
     echo "If there is a subdirectory error that is fine"
         
     # Clone the main repo at a specific version
-    echo "Using obsidian-zola version: $REPO_VERSION" 
-    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch ${REPO_VERSION} __site
+    echo "Using obsidian-zola version:" 
+    echo $REPO_VERSION
+    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch ${REPO_VERSION}
     # Move the netlify.toml into that directory
     if [ ! -f __obsidian/netlify.toml ]; then
     	echo "No netlify.toml. Exiting"
