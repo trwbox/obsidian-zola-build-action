@@ -86,7 +86,7 @@ main() {
     # Getting the enviroment variables, and setting them
     echo "Getting and setting enviroment variables"
     cd __site
-    python evn.py
+    python env.py
     source env.sh && rm env.sh
     
     # Do the things from run.sh
