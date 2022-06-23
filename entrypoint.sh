@@ -1,11 +1,6 @@
 #!/bin/bash
 set -o pipefail
 
-# Set the version of obsidian-zola that this will build from if not set by the user
-if [[ -n "$REPO_VERSION" ]]; then
-    REPO_VERION="v1.3.0"
-fi
-
 # For backwards compatibility
 if [[ -n "$TOKEN" ]]; then
     GITHUB_TOKEN=$TOKEN
@@ -74,8 +69,8 @@ main() {
     echo "If there is a subdirectory error that is fine"
         
     # Clone the main repo at a specific version
-    echo "Using obsidian-zola version: ${REPO_VERSION}"
-    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch ${REPO_VERSION}
+    echo "Using obsidian-zola version: v1.3.0"
+    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch v1.3.0
     echo "Make and move the repo into __site"
     mkdir __site
     mv obsidian-zola/* __site/
