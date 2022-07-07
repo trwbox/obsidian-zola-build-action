@@ -1,6 +1,6 @@
 # obsidian-zola github pages deploy action
 
-This is a github actions script to build an obsidian-zola site, and push it to the gh-pages branch of a repo.
+This is a github actions script to build an obsidian-zola site, and push it to the gh-pages branch of a repo. This action can be added to a private github repo, with it pushing to a public branch for the website. 
 
 # Steps to Use
 
@@ -13,12 +13,13 @@ This is a github actions script to build an obsidian-zola site, and push it to t
 # TODO
 
 - [ ] Pull the domain of the site that is being published automatically, to not rely on user input
+      - This might not be possible with Github given variables
 - [ ] Describe some of the other global variables that can be set
-- [ ] See if this can work by pulling from a private repo and only pushing the site to a public repo, so that if obsidian-zola allows for hidden pages that can be done like that
-- [ ] Publish on github marketplace for easier use
+- [X] See if this can work by pulling from a private repo and only pushing the site to a public repo, so that if obsidian-zola allows for hidden pages that can be done like that
+- [ ] Publish on github marketplace for easier use - Want to let the obsidian-zola repo to go through a few updates first to iron out any issues
 - [ ] Speed improvements?
 - [ ] Fix issues that arise in documentation or code
-- [ ] Don't just pull obsidian-zola straight, pull a versioned instead
+- [X] Don't just pull obsidian-zola straight, pull a versioned instead
 
 ## Currently there is a release thay v0.1.1-testing which fixes path issues, but needs some changes in netlify.toml
 Change BASE_PATH to have the base path without any /s
