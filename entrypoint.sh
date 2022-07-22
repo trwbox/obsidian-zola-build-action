@@ -6,6 +6,10 @@ if [[ -n "$TOKEN" ]]; then
     GITHUB_TOKEN=$TOKEN
 fi
 
+if [[ -z "$ZOLA_VERSION" ]]; then
+    ZOLA_VERSION="v1.3.1"
+fi
+
 if [[ -z "$PAGES_BRANCH" ]]; then
     PAGES_BRANCH="gh-pages"
 fi
@@ -71,10 +75,17 @@ main() {
     # This will throw a subdirectory error, that is okay
     mv * __obsidian
     echo "If there is a subdirectory error that is fine"
-        
-    # Clone the main repo at a specific version
-    echo "Using obsidian-zola version: v1.3.1"
-    git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch v1.3.1 __site
+    
+    # If there is a ZOLA_REPO enviroment variable specified by the user clone that
+    if [[ -z "$ZOLA_REPO" ]]; then 
+        echo "Cloning from the user specified obsidian-zola repo"
+        git clone $ZOLE_REPO __site
+    else
+        # Clone the main repo at a specific version
+        echo "Using obsidian-zola version: v1.3.1"
+        git clone https://github.com/ppeetteerrs/obsidian-zola.git --branch $ZOLA_VERSION __site
+    fi 
+
     # Move the netlify.toml into that directory
     if [ ! -f __obsidian/netlify.toml ]; then
     	echo "No netlify.toml. Exiting"
