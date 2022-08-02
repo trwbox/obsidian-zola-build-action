@@ -14,8 +14,11 @@ This is a github actions script to build an obsidian-zola site, and push it to t
 ## Other Environment Variables that can be assigned
 
 These are some other environment variables that can be set in the main.yml to allow for customization
+
 ```ZOLA_VERSION``` can be used to set a specific version, must be a string like ```v1.3.1```
+
 ```PAGES_BRANCH``` can be used if the branch being used for GitHub Pages is a non-standard branch
+
 ```ZOLA_REPO``` can be used to specify a custom repo for obsidian-zola. This needs to be a fully qualified domain name like ```https://github.com/trwbox/obsidian-zola.git```
 
 ## TODO
