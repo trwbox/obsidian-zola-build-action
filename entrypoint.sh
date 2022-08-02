@@ -79,7 +79,8 @@ main() {
     # If there is a ZOLA_REPO enviroment variable specified by the user clone that
     if [[ -n "$ZOLA_REPO" ]]; then 
         echo "Cloning from the user specified obsidian-zola repo"
-        git clone ${ZOLE_REPO} __site
+	echo "Cloning: $ZOLA_REPO"
+        git clone $ZOLA_REPO __site
     else
         # Clone the main repo at a specific version
         echo "Using obsidian-zola version: v1.3.1"
