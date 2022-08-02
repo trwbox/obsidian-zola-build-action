@@ -77,7 +77,7 @@ main() {
     echo "If there is a subdirectory error that is fine"
     
     # If there is a ZOLA_REPO enviroment variable specified by the user clone that
-    if [[ -z "$ZOLA_REPO" ]]; then 
+    if [[ -n "$ZOLA_REPO" ]]; then 
         echo "Cloning from the user specified obsidian-zola repo"
         git clone $ZOLE_REPO __site
     else
