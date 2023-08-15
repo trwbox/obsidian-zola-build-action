@@ -12,8 +12,8 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
 RUN apt-get update && apt-get install -y wget git python-is-python3 python3-pip rsync
-RUN pip3 install python-slugify
-RUN pip3 install rtoml
+RUN pip3 install python-slugify --break-system-packages
+RUN pip3 install rtoml --break-system-packages
 
 RUN wget -q -O - \
 "https://github.com/getzola/zola/releases/download/v0.15.2/zola-v0.15.2-x86_64-unknown-linux-gnu.tar.gz" \
